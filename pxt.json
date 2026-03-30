@@ -9,6 +9,7 @@
     "main.ts",
     "tutorials/ninjabird.md",
     "tutorials/rocketblaster.md",
+    "tutorials/starcatcher.md",
     "assets.json"
   ],
   "testFiles": ["test.ts"],
