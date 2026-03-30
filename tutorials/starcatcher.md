@@ -108,7 +108,7 @@ Let's make stars rain down from the sky for our ninja to catch. We will add code
 - :move: **Give it a Speed**: Add a `|| sprites: set mySprite velocity to vx (0) vy (0) ||` block. Change **mySprite** to **star** and set **vy** to **60**. This makes the star fall straight down!
 - :pin: **Random Start Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Set **y** to **0** (top of the screen) and wrap the **x** value with a `|| math: pick random (0) to (160) ||` block so stars appear in different places each time.
 - :ghost: **Auto Destroy**: Add a `|| sprites: set mySprite flag ||` block and turn on **Auto Destroy**. This cleans up stars that the ninja misses so the game doesn't slow down.
-- :label: **Set the Kind**: Add a `|| sprites: set mySprite kind to ||` block, change the sprite to **star**, and set the kind to **Food**.
+- :label: **Update the Kind**: Find the existing `|| sprites: set mySprite kind to ||` block, make sure the sprite is **star**, and set the kind to **Food**.
 
 ~hint Why do we use the Food kind?
 
