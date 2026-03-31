@@ -10,6 +10,8 @@
     "tutorials/ninjabird.md",
     "tutorials/rocketblaster.md",
     "tutorials/starcatcher.md",
+    "tutorials/meteorshower.md",
+    "tutorials/fruitbasket.md",
     "assets.json"
   ],
   "testFiles": ["test.ts"],
