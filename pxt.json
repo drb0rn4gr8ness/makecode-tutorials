@@ -12,6 +12,7 @@
     "tutorials/starcatcher.md",
     "tutorials/meteorshower.md",
     "tutorials/fruitbasket.md",
+    "tutorials/groovystar.md",
     "assets.json"
   ],
   "testFiles": ["test.ts"],
