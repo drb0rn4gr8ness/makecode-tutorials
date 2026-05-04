@@ -85,15 +85,16 @@ Time to bring YOUR star to life! This is the most exciting moment — the second
 - :info: A **sprite** is any image that can move around on the screen. Your star, the falling notes, the bad vibes — they're all sprites! Think of them like actors on a stage.
 hint~
 
+Here's how we build YOUR star — four blocks, in this order:
+
 - :plus: **Create the Sprite**: Add a `|| variables(sprites): set mySprite to ||` block inside `|| loops: on start ||`. Click **New Variable** and name it **star**. Pick a star, shimmer, or gem image from the Gallery — something that screams GROOVY!
 - :pin: **Set the Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Change **mySprite** to **star**, set **x** to **80** and **y** to **100** so your star starts near the bottom of the stage!
 - :game controller: **Enable Movement**: Add a `|| controller: move mySprite with buttons vx (100) vy (100) ||` block. Change **mySprite** to **star**, set **vx** to `noteSpeed`, and set **vy** to **0**. Left and right ONLY — we're staying on the dance floor!
+- :lock: **Stay on Stage**: Add a `|| sprites: set mySprite stay in screen ||` block, change it to **star**, and flip it to **ON**. No flying off the edge!
 
 ~hint Wait — why are we using noteSpeed instead of just typing 80?
 - :book: Because NOW if we want to change the speed, we only change the number in ONE place — the variable — and everywhere that uses it automatically updates! That's the POWER of variables. One change, instant effect everywhere. 💡
 hint~
-
-- :lock: **Stay on Stage**: Add a `|| sprites: set mySprite stay in screen ||` block, change it to **star**, and flip it to **ON**. No flying off the edge!
 
 ```blocks
 scene.setBackgroundColor(9)
@@ -135,7 +136,7 @@ Look at your `on start` block right now — the computer does every single line 
 
 ## Make Musical Notes Fall! 🎵
 
-Time to fill the sky with music! We're going to add code inside the `|| game: on game update every (1500) ms ||` block — that block already runs every 1.5 seconds automatically!
+Time to fill the sky with music! We're going to add code inside the `|| game: on game update every (1500) ms ||` block — that block already runs every 1.5 seconds automatically! (Quick heads-up: that block is a kind of **event** — we'll dig into events properly in a couple steps.)
 
 ~hint What does 1500 mean?
 - :info: Time in code is measured in **milliseconds**. 1000 milliseconds = 1 second. So 1500 milliseconds = 1.5 seconds. Every 1.5 seconds, a new note drops from the sky! 🎵
@@ -146,7 +147,7 @@ Add these steps INSIDE the `|| game: on game update every ||` block — in this 
 - :plus: **Create a Note**: Add a `|| variables(sprites): set mySprite to ||` block. Create a **New Variable** called **note**. Pick a musical note, gem, or coin image — something fun to collect!
 - :marker: **Set the Kind**: Make sure the kind is set to **Food**. This tells the game "this is something the player wants to catch!"
 - :move: **Give it Speed**: Add a `|| sprites: set mySprite velocity to vx (0) vy (0) ||` block. Change **mySprite** to **note**, keep **vx** at **0**, and set **vy** to `noteSpeed`. Watch — we're using that variable AGAIN! 🎯
-- :pin: **Random Start Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Set **y** to **0** (top of the screen). Wrap **x** with a `|| math: pick random (0) to (160) ||` block — so notes fall from different spots every time!
+- :pin: **Random Start Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Set **y** to **0** (top of the screen). Wrap **x** with a `|| math: pick random (0) to (160) ||` block. **Random** means a different number every time — so notes fall from a different spot at every drop. Surprise!
 - :ghost: **Auto Destroy**: Add a `|| sprites: set mySprite flag ||` block and turn on **Auto Destroy**. This cleans up any notes that fall past the bottom so your game stays fast!
 
 ~hint Why do we need Auto Destroy?
@@ -207,7 +208,6 @@ Let's make something AMAZING happen the moment your star catches a note! Add all
 hint~
 
 ```blocks
-//@collapsed
 let star: Sprite = null
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -251,7 +251,7 @@ Let's make the game TRICKY! Update the inside of your `|| game: on game update e
 - :move: **Move the Note Code**: Move your existing note code into the **else** section (it runs the OTHER 70% of the time).
 
 ~hint I'm confused about the if vs. else sections!
-- :info: The **IF** section runs when `randint(1,10)` lands on 1, 2, or 3 — that's 3 out of 10. **BAD VIBE drops!**
+- :info: The **IF** section runs when the dice roll lands on 1, 2, or 3 — that's 3 out of 10. **BAD VIBE drops!**
 - The **ELSE** section runs all other times — 4, 5, 6, 7, 8, 9, or 10. **NOTE drops!**
 - So most of the time you see notes, but every so often — surprise! Bad vibe incoming! 💀
 hint~
@@ -285,7 +285,6 @@ Now let's make those bad vibes actually DANGEROUS! Add this inside the `|| sprit
 - :camera shake: **CAMERA SHAKE** *(bonus!)*: Add a `|| scene: camera shake by (4) pixels for (500) ms ||` block — makes it feel like a real IMPACT! 📷💥
 
 ```blocks
-//@collapsed
 let star: Sprite = null
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
@@ -323,12 +322,14 @@ Your variable is ALIVE. And your game is about to get wild. 🌀
 
 Let's make the game get HARDER as you score! We're adding one more thing inside your **Player + Food overlap event** — right after `change score by 1`.
 
+We need a way to ask the computer: *"Did the score just hit a multiple of 5?"* The trick is **mod** — a fancy word for "divide and look at the remainder." When the score divides evenly by 5 (0, 5, 10, 15, 20...), the remainder is **0** — and that's our signal to speed things up!
+
 - :shuffle: **Add a Speed Check**: Add an `|| logic: if <true> then ||` block right after the score change.
 - :game die: **Check Every 5 Points**: Replace **true** with a `|| logic: (0) = (0) ||` block. On the left, add `|| info: score ||`. Wrap it with `|| math: (0) mod (0) ||` and set the right side to **5**. Set the right side of the equals to **0**.
 - :move: **Increase the Speed**: Inside the if block, add a `|| variables: change noteSpeed by (10) ||` block. Every 5 catches — SPEED UP!
 
-~hint What does "mod" (%) mean?
-- :book: The `mod` block asks: **"does this number divide evenly?"** Score mod 5 equals 0 when the score is 0, 5, 10, 15, 20... So every 5 catches, the condition is true and we speed things up! It's like a speedometer that clicks every 5 points. 🏎️
+~hint Want a real-world picture of mod?
+- :book: Think of mod as a speedometer that clicks every 5 points. **Score 5? Click. Score 10? Click. Score 15? Click.** Each click = the remainder hits 0 = the speed goes up by 10! 🏎️
 hint~
 
 Hit play and catch 5 notes — feel that speed jump? **Your variable just changed itself!** That's the magic of storing information in memory — you can read it AND change it whenever you want!
@@ -359,6 +360,8 @@ A **POWER-UP** is going to fall from the sky — a groovy lightning bolt! If you
 We're using the SAME event system you already know — but now it's watching for a THIRD kind of sprite!
 
 ## Wire Up the Power-Up! ⚡
+
+We're stacking THREE possibilities now — a power-up, a bad vibe, OR a note. To pick one, we'll use **`if` / `else if` / `else`**: the computer checks them top-to-bottom and runs the **FIRST** branch that's true. Just like the fork-in-the-road from before, but with an extra path in the middle!
 
 **Step 1 — Add to the Spawner:**
 
