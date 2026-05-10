@@ -163,9 +163,8 @@ BOOM! Your star is on screen and moving around! Hit play and try it out — you 
     hint~
 
 ```blocks
-//@collapsed
-let note: Sprite = null
 game.onUpdateInterval(1500, function () {
+    let note: Sprite = null
     note = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
     note.setVelocity(0, noteSpeed)
     note.setPosition(randint(0, 160), 0)
@@ -270,9 +269,9 @@ YOUR STAR IS CATCHING NOTES! Hit play and go catch everything you can! 🎯
     hint~
 
 ```blocks
-let note: Sprite = null
-let badVibe: Sprite = null
 game.onUpdateInterval(1500, function () {
+    let note: Sprite = null
+    let badVibe: Sprite = null
     if (randint(1, 10) <= 3) {
         badVibe = sprites.create(sprites.projectile.explosion1, SpriteKind.Enemy)
         badVibe.setVelocity(0, noteSpeed)
@@ -348,8 +347,8 @@ Hit play and catch 5 notes — feel that speed jump? **Your variable just change
 
 ```blocks
 //@collapsed
-let noteSpeed: number = 80
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    let noteSpeed: number = 80
     info.changeScoreBy(1)
     otherSprite.destroy(effects.confetti, 200)
     if (info.score() % 5 == 0) {
@@ -400,10 +399,10 @@ Inside the `|| sprites: on overlap ||` block that says **Player** and **Projecti
 
 ```blocks
 //@collapsed
-let note: Sprite = null
-let badVibe: Sprite = null
-let powerUp: Sprite = null
 game.onUpdateInterval(1500, function () {
+    let note: Sprite = null
+    let badVibe: Sprite = null
+    let powerUp: Sprite = null
     if (randint(1, 10) == 1) {
         powerUp = sprites.create(sprites.effects.electricEffect1, SpriteKind.Projectile)
         powerUp.setVelocity(0, noteSpeed)
