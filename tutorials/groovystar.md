@@ -213,7 +213,6 @@ Let's make something AMAZING happen the moment your star catches a note! Add all
   hint~
 
 ```blocks
-let star: Sprite = null
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy(effects.confetti, 200)
@@ -273,7 +272,6 @@ Let's make the game TRICKY! Update the inside of your `|| game: on game update e
 
 ```blocks
 //@collapsed
-let star: Sprite = null
 let note: Sprite = null
 let badVibe: Sprite = null
 game.onUpdateInterval(1500, function () {
@@ -296,11 +294,10 @@ game.onUpdateInterval(1500, function () {
 Now let's make those bad vibes actually DANGEROUS! Add this inside the `|| sprites: on overlap ||` block that says **Player** and **Enemy**.
 
 - :heart: **Take Away a Life**: Add a `|| info: change life by (-1) ||` block. Make sure the number is **negative one** (-1)!
-- :boom: **Destroy the Bad Vibe**: Add a `|| sprites: destroy mySprite with effect ||` block. Change to **otherSprite**, click **+**, and pick a fire or explosion effect.
+- :trash: **Destroy the Bad Vibe**: Add a `|| sprites: destroy mySprite with effect ||` block. Change to **otherSprite**, click **+**, and pick a fire or explosion effect.
 - :camera shake: **CAMERA SHAKE** _(bonus!)_: Add a `|| scene: camera shake by (4) pixels for (500) ms ||` block — makes it feel like a real IMPACT! 📷💥
 
 ```blocks
-let star: Sprite = null
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     otherSprite.destroy(effects.fire, 200)
@@ -353,7 +350,6 @@ Hit play and catch 5 notes — feel that speed jump? **Your variable just change
 
 ```blocks
 //@collapsed
-let star: Sprite = null
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy(effects.confetti, 200)
@@ -380,7 +376,7 @@ We're stacking THREE possibilities now — a power-up, a bad vibe, OR a note. To
 
 **Step 1 — Add to the Spawner:**
 
-Go back inside your `|| game: on game update every ||` block and add a NEW `|| logic: if ||` at the very TOP (above the existing if/else). This one checks `randint(1, 10) = 1` — a 10% chance!
+Go back inside your `|| game: on game update every ||` block and add click the **`+`** in the existing **`if` / `else`** block to add an **`else if`** block. Move your badVibe code into the **`else if`** block. Now add a new check in the **`if`** block. This one checks `randint(1, 10) = 1` — a 10% chance!
 
 Inside that new if block:
 
@@ -405,7 +401,6 @@ Inside the `|| sprites: on overlap ||` block that says **Player** and **Projecti
 
 ```blocks
 //@collapsed
-let star: Sprite = null
 let note: Sprite = null
 let badVibe: Sprite = null
 let powerUp: Sprite = null
@@ -431,7 +426,6 @@ game.onUpdateInterval(1500, function () {
 
 ```blocks
 //@collapsed
-let star: Sprite = null
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeScoreBy(3)
     otherSprite.destroy(effects.starField, 500)
