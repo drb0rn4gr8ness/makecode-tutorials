@@ -122,49 +122,48 @@ BOOM! Your star is on screen and moving around! Hit play and try it out — you 
 
 ---
 
-Click **Next** when your Sensei gives the signal! 🥷
+    Click **Next** when your Sensei gives the signal! 🥷
 
 ## What is an Event? @showhint
 
-Imagine you have a bodyguard who **NEVER sleeps** and **NEVER blinks.** 👀
+    Imagine you have a bodyguard who **NEVER sleeps** and **NEVER blinks.** 👀
 
-Their only job is to watch for one specific thing. The moment it happens — **BAM** — they spring into action!
+    Their only job is to watch for one specific thing. The moment it happens — **BAM** — they spring into action!
 
-That's exactly what an **event block** does. You don't press a button. You don't call it. **It calls itself!**
+    That's exactly what an **event block** does. You don't press a button. You don't call it. **It calls itself!**
 
-We already have a few event guards set up in your template:
+    We already have a few event guards set up in your template:
 
-- The `|| game: on game update every (1500) ms ||` block — yes, **a timer counts as an event too!** It fires automatically every 1.5 seconds.
-- One overlap event watching for **Player + Food** (your star + a note)
-- One overlap event watching for **Player + Enemy** (your star + a bad vibe)
+    - The `|| game: on game update every (1500) ms ||` block — yes, **a timer counts as an event too!** It fires automatically every 1.5 seconds.
+    - One overlap event watching for **Player + Food** (your star + a note)
+    - One overlap event watching for **Player + Enemy** (your star + a bad vibe)
 
-Let's start putting them to work! 🔥
+    Let's start putting them to work! 🔥
 
 ## Make Musical Notes Fall! 🎵
 
-Time to fill the sky with music! We're going to add code inside the `|| game: on game update every (1500) ms ||` block — that's the **timer event** you just learned about! It fires automatically every 1.5 seconds.
+    Time to fill the sky with music! We're going to add code inside the `|| game: on game update every (1500) ms ||` block — that's the **timer event** you just learned about! It fires automatically every 1.5 seconds.
 
-~hint What does 1500 mean?
+    ~hint What does 1500 mean?
 
-- :info: Time in code is measured in **milliseconds**. 1000 milliseconds = 1 second. So 1500 milliseconds = 1.5 seconds. Every 1.5 seconds, a new note drops from the sky! 🎵
-  hint~
+    - :info: Time in code is measured in **milliseconds**. 1000 milliseconds = 1 second. So 1500 milliseconds = 1.5 seconds. Every 1.5 seconds, a new note drops from the sky! 🎵
+    hint~
 
-Add these steps INSIDE the `|| game: on game update every ||` block — in this exact ORDER:
+    Add these steps INSIDE the `|| game: on game update every ||` block — in this exact ORDER:
 
-- :plus: **Create a Note**: Add a `|| variables(sprites): set mySprite to ||` block. Create a **New Variable** called **note**. Pick a musical note, gem, or coin image — something fun to collect!
-- :marker: **Set the Kind**: Make sure the kind is set to **Food**. This tells the game "this is something the player wants to catch!"
-- :move: **Give it Speed**: Add a `|| sprites: set mySprite velocity to vx (0) vy (0) ||` block. Change **mySprite** to **note**, keep **vx** at **0**, and set **vy** to `noteSpeed`. Watch — we're using that variable AGAIN! 🎯
-- :pin: **Random Start Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Set **y** to **0** (top of the screen). Wrap **x** with a `|| math: pick random (0) to (160) ||` block. **Random** means a different number every time — so notes fall from a different spot at every drop. Surprise!
-- :trash: **Auto Destroy**: Add a `|| sprites: set mySprite flag ||` block and turn on **Auto Destroy**. This cleans up any notes that fall past the bottom so your game stays fast!
+    - :plus: **Create a Note**: Add a `|| variables(sprites): set mySprite to ||` block. Create a **New Variable** called **note**. Pick a musical note, gem, or coin image — something fun to collect!
+    - :marker: **Set the Kind**: Make sure the kind is set to **Food**. This tells the game "this is something the player wants to catch!"
+    - :move: **Give it Speed**: Add a `|| sprites: set mySprite velocity to vx (0) vy (0) ||` block. Change **mySprite** to **note**, keep **vx** at **0**, and set **vy** to `noteSpeed`. Watch — we're using that variable AGAIN! 🎯
+    - :pin: **Random Start Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Set **y** to **0** (top of the screen). Wrap **x** with a `|| math: pick random (0) to (160) ||` block. **Random** means a different number every time — so notes fall from a different spot at every drop. Surprise!
+    - :trash: **Auto Destroy**: Add a `|| sprites: set mySprite flag ||` block and turn on **Auto Destroy**. This cleans up any notes that fall past the bottom so your game stays fast!
 
-~hint Why do we need Auto Destroy?
+    ~hint Why do we need Auto Destroy?
 
-- :info: Without it, every note the star misses keeps living INVISIBLY below the screen — still taking up memory! Auto Destroy is like a cleanup crew that removes them the moment they go offscreen. 🧹
-  hint~
+    - :info: Without it, every note the star misses keeps living INVISIBLY below the screen — still taking up memory! Auto Destroy is like a cleanup crew that removes them the moment they go offscreen. 🧹
+    hint~
 
 ```blocks
 //@collapsed
-let star: Sprite = null
 let note: Sprite = null
 game.onUpdateInterval(1500, function () {
     note = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
@@ -176,13 +175,13 @@ game.onUpdateInterval(1500, function () {
 
 ## 🔔 Sensei Check — Events! @showdialog
 
-LOOK AT THOSE NOTES FALL! Your game is coming alive! 🎶
+    LOOK AT THOSE NOTES FALL! Your game is coming alive! 🎶
 
-**Senseis — ask the class:**
+    **Senseis — ask the class:**
 
-1. "Did you have to PRESS anything to make those notes fall? What's making them fall every 1.5 seconds?"
-2. "What KIND of event is the on-game-update-every block — is it a button event? A timer event? Something else?"
-3. "What's the difference between `on start` (runs once) and `on game update every` (runs over and over)?"
+    1. "Did you have to PRESS anything to make those notes fall? What's making them fall every 1.5 seconds?"
+    2. "What KIND of event is the on-game-update-every block — is it a button event? A timer event? Something else?"
+    3. "What's the difference between `on start` (runs once) and `on game update every` (runs over and over)?"
 
 ---
 
@@ -231,47 +230,46 @@ YOUR STAR IS CATCHING NOTES! Hit play and go catch everything you can! 🎯
 
 ---
 
-Click **Next** when your Sensei gives the signal! 🥷
+    Click **Next** when your Sensei gives the signal! 🥷
 
 ## What is a Conditional? @showhint
 
-You just locked in **sequencing** — code marches straight down the page, top to bottom, line by line. 📜
+    You just locked in **sequencing** — code marches straight down the page, top to bottom, line by line. 📜
 
-But what if we want the code to take a **DETOUR**? That's called **BRANCHING** 🌿 — leaving the main path to do something different. And the trick that creates a branch? **Asking a question.**
+    But what if we want the code to take a **DETOUR**? That's called **BRANCHING** 🌿 — leaving the main path to do something different. And the trick that creates a branch? **Asking a question.**
 
-But not just any question! _"What's your favorite pizza topping?"_ won't cut it — way too many answers! 🍕 We need a question with only **TWO** possible answers: ✅ **YES** or ❌ **NO**.
+    But not just any question! _"What's your favorite pizza topping?"_ won't cut it — way too many answers! 🍕 We need a question with only **TWO** possible answers: ✅ **YES** or ❌ **NO**.
 
-Programmers have a fancy word for those YES/NO answers — a **BOOLEAN** 🤖. Think of it like a light switch 💡 — it's either **ON (yes / true)** or **OFF (no / false)**. Never in between. Booleans are the SECRET WEAPON of every computer — only two answers, but you can build EVERYTHING out of them!
+    Programmers have a fancy word for those YES/NO answers — a **BOOLEAN** 🤖. Think of it like a light switch 💡 — it's either **ON (yes / true)** or **OFF (no / false)**. Never in between. Booleans are the SECRET WEAPON of every computer — only two answers, but you can build EVERYTHING out of them!
 
-Picture your code as a video-game character speed-running a track. Suddenly the track SPLITS! A glowing sign blocks the way, demanding a boolean answer:
+    Picture your code as a video-game character speed-running a track. Suddenly the track SPLITS! A glowing sign blocks the way, demanding a boolean answer:
 
-_"Is there a dragon ahead?"_ 🐲
+    _"Is there a dragon ahead?"_ 🐲
 
-- **YES (true)** → take the LEFT branch and HIDE!
-- **NO (false)** → keep BLASTING straight ahead! 💨
+    - **YES (true)** → take the LEFT branch and HIDE!
+    - **NO (false)** → keep BLASTING straight ahead! 💨
 
-Your character can only take ONE branch. Never both. Never neither.
+    Your character can only take ONE branch. Never both. Never neither.
 
-This whole setup — the question, the boolean answer, the branching — is called a **conditional**. In our game, we'll ask the computer: _"Should we drop a BAD VIBE this time?"_ — and the boolean answer picks which branch runs!
+    This whole setup — the question, the boolean answer, the branching — is called a **conditional**. In our game, we'll ask the computer: _"Should we drop a BAD VIBE this time?"_ — and the boolean answer picks which branch runs!
 
 ## Add Bad Vibes! 😤
 
-Let's make the game TRICKY! Update the inside of your `|| game: on game update every ||` block — we're wrapping everything in a decision!
+    Let's make the game TRICKY! Update the inside of your `|| game: on game update every ||` block — we're wrapping everything in a decision!
 
-- :shuffle: **Add an If/Else**: At the very TOP of the update block, add an `|| logic: if <true> then / else ||` block. This creates TWO paths — one for bad vibes and one for notes.
-- :game die: **Make it Random**: Replace the **true** condition with a `|| logic: (0) < (0) ||` comparison. On the LEFT put a `|| math: pick random (1) to (10) ||` block. On the RIGHT put **3**. This means a bad vibe appears about 30% of the time!
-- :bomb: **Create the Bad Vibe**: In the **if** section (when the random number is 3 or less), add a new sprite variable called **badVibe**. Pick a spiky, scary, or glitchy image. Set kind to **Enemy**, same `noteSpeed` for velocity, same random x position, Auto Destroy ON.
-- :move: **Move the Note Code**: Move your existing note code into the **else** section (it runs the OTHER 70% of the time).
+    - :shuffle: **Add an If/Else**: At the very TOP of the update block, add an `|| logic: if <true> then / else ||` block. This creates TWO paths — one for bad vibes and one for notes.
+    - :game die: **Make it Random**: Replace the **true** condition with a `|| logic: (0) < (0) ||` comparison. On the LEFT put a `|| math: pick random (1) to (10) ||` block. On the RIGHT put **3**. This means a bad vibe appears about 30% of the time!
+    - :bomb: **Create the Bad Vibe**: In the **if** section (when the random number is 3 or less), add a new sprite variable called **badVibe**. Pick a spiky, scary, or glitchy image. Set kind to **Enemy**, same `noteSpeed` for velocity, same random x position, Auto Destroy ON.
+    - :move: **Move the Note Code**: Move your existing note code into the **else** section (it runs the OTHER 70% of the time).
 
-~hint I'm confused about the if vs. else sections!
+    ~hint I'm confused about the if vs. else sections!
 
-- :info: The **IF** section runs when the dice roll lands on 1, 2, or 3 — that's 3 out of 10. **BAD VIBE drops!**
-- The **ELSE** section runs all other times — 4, 5, 6, 7, 8, 9, or 10. **NOTE drops!**
-- So most of the time you see notes, but every so often — surprise! Bad vibe incoming! 💀
-  hint~
+    - :info: The **IF** section runs when the dice roll lands on 1, 2, or 3 — that's 3 out of 10. **BAD VIBE drops!**
+    - The **ELSE** section runs all other times — 4, 5, 6, 7, 8, 9, or 10. **NOTE drops!**
+    - So most of the time you see notes, but every so often — surprise! Bad vibe incoming! 💀
+    hint~
 
 ```blocks
-//@collapsed
 let note: Sprite = null
 let badVibe: Sprite = null
 game.onUpdateInterval(1500, function () {
@@ -291,11 +289,11 @@ game.onUpdateInterval(1500, function () {
 
 ## Lose a Life on Bad Vibe! 💥
 
-Now let's make those bad vibes actually DANGEROUS! Add this inside the `|| sprites: on overlap ||` block that says **Player** and **Enemy**.
+    Now let's make those bad vibes actually DANGEROUS! Add this inside the `|| sprites: on overlap ||` block that says **Player** and **Enemy**.
 
-- :heart: **Take Away a Life**: Add a `|| info: change life by (-1) ||` block. Make sure the number is **negative one** (-1)!
-- :trash: **Destroy the Bad Vibe**: Add a `|| sprites: destroy mySprite with effect ||` block. Change to **otherSprite**, click **+**, and pick a fire or explosion effect.
-- :camera shake: **CAMERA SHAKE** _(bonus!)_: Add a `|| scene: camera shake by (4) pixels for (500) ms ||` block — makes it feel like a real IMPACT! 📷💥
+    - :heart: **Take Away a Life**: Add a `|| info: change life by (-1) ||` block. Make sure the number is **negative one** (-1)!
+    - :trash: **Destroy the Bad Vibe**: Add a `|| sprites: destroy mySprite with effect ||` block. Change to **otherSprite**, click **+**, and pick a fire or explosion effect.
+    - :camera shake: **CAMERA SHAKE** _(bonus!)_: Add a `|| scene: camera shake by (4) pixels for (500) ms ||` block — makes it feel like a real IMPACT! 📷💥
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -307,13 +305,13 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 
 ## 🤔 Sensei Check — Conditionals! @showdialog
 
-Your game has DANGER now! Dodge those bad vibes! 😤
+    Your game has DANGER now! Dodge those bad vibes! 😤
 
-**Senseis — ask the class:**
+    **Senseis — ask the class:**
 
-1. "`randint(1, 10) <= 3` — how many numbers out of 10 make a bad vibe drop? Count them out loud!"
-2. "What number would you change to make bad vibes appear MORE often? What about LESS often?"
-3. "What does the ELSE branch do? Shout it out — when does ELSE run?"
+    1. "`randint(1, 10) <= 3` — how many numbers out of 10 make a bad vibe drop? Count them out loud!"
+    2. "What number would you change to make bad vibes appear MORE often? What about LESS often?"
+    3. "What does the ELSE branch do? Shout it out — when does ELSE run?"
 
 ---
 
@@ -350,6 +348,7 @@ Hit play and catch 5 notes — feel that speed jump? **Your variable just change
 
 ```blocks
 //@collapsed
+let noteSpeed: number = 80
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy(effects.confetti, 200)
@@ -422,10 +421,6 @@ game.onUpdateInterval(1500, function () {
         note.setFlag(SpriteFlag.AutoDestroy, true)
     }
 })
-```
-
-```blocks
-//@collapsed
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeScoreBy(3)
     otherSprite.destroy(effects.starField, 500)
