@@ -202,7 +202,7 @@ Look back inside your `on game update every` block — the computer does every s
 Let's make something AMAZING happen the moment your star catches a note! Add all of this inside the `|| sprites: on overlap ||` block that says **Player** and **Food**.
 
 - :trophy: **Earn a Point**: Add a `|| info: change score by (1) ||` block. One note = one point!
-- :boom: **Confetti Explosion**: Add a `|| sprites: destroy mySprite with effect ||` block. Change **mySprite** to **otherSprite**, click the **+** sign, and pick **confetti** or **rings**. BOOM — the note EXPLODES when caught! 🎊
+- :trash: **Confetti Explosion**: Add a `|| sprites: destroy mySprite with effect ||` block. Change **mySprite** to **otherSprite**, click the **+** sign, and pick **confetti** or **rings**. BOOM — the note EXPLODES when caught! 🎊
 
 ~hint Who calls the overlap event? How does it know to run?
 
@@ -383,7 +383,7 @@ Inside that new if block:
 Inside the `|| sprites: on overlap ||` block that says **Player** and **Projectile**, add:
 
 - :trophy: `|| info: change score by (3) ||` — triple points! 💰
-- :boom: `|| sprites: destroy otherSprite with effect (starField) ||` — LIGHT SHOW! 🌠
+- :trash: `|| sprites: destroy otherSprite with effect (starField) ||` — LIGHT SHOW! 🌠
 - :music: `|| music: play sound (power up) ||`
 - :camera shake: `|| scene: camera shake by (2) pixels for (500) ms ||`
 
@@ -451,8 +451,8 @@ Want to keep going? Here are some ways to customize Groovy Star — try them all
 **Change the look:**
 
 - :paint brush: Try a different background color — yellow, orange, or pink for neon concert vibes!
-- :star: Swap your star sprite for any shimmer, gem, or dancing character in the Gallery
-- :boom: Change the catch effect from `confetti` to `hearts`, `rings`, or `spray`
+- :shuffle: Swap your star sprite for any shimmer, gem, or dancing character in the Gallery
+- :star: Change the catch effect from `confetti` to `hearts`, `rings`, or `spray`
 
 **Add some sounds:**
 
