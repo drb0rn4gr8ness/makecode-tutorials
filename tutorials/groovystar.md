@@ -121,7 +121,6 @@ BOOM! Your star is on screen and moving around! Hit play and try it out — you 
 3. "Thumbs UP if you think changing `noteSpeed` to 200 makes the star move FASTER — thumbs DOWN if you think slower!"
 
 ---
-
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## What is an Event? @showhint
