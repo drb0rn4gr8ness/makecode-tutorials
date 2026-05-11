@@ -153,8 +153,8 @@ Add these steps INSIDE the `|| game: on game update every ||` block — in this 
 hint~
 
 ```blocks
+let note: Sprite = null
 game.onUpdateInterval(1500, function () {
-    let note: Sprite = null
     note = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
     note.setVelocity(0, noteSpeed)
     note.setPosition(randint(0, 160), 0)
@@ -254,9 +254,9 @@ Let's make the game TRICKY! Update the inside of your `|| game: on game update e
 hint~
 
 ```blocks
+let badVibe: Sprite = null
+let note: Sprite = null
 game.onUpdateInterval(1500, function () {
-    let badVibe: Sprite = null
-    let note: Sprite = null
     if (randint(1, 10) <= 3) {
         badVibe = sprites.create(sprites.projectile.explosion1, SpriteKind.Enemy)
         badVibe.setVelocity(0, noteSpeed)
@@ -280,8 +280,8 @@ Now let's make those bad vibes actually DANGEROUS! Add this inside the `|| sprit
 - :camera shake: **CAMERA SHAKE** _(bonus!)_: Add a `|| scene: camera shake by (4) pixels for (500) ms ||` block — makes it feel like a real IMPACT! 📷💥
 
 ```blocks
+let noteSpeed: number = 80
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    let noteSpeed: number = 80
     info.changeLifeBy(-1)
     otherSprite.destroy(effects.fire, 200)
     scene.cameraShake(4, 500)
@@ -330,8 +330,8 @@ hint~
 Hit play and catch 5 notes — feel that speed jump? **Your variable just changed itself!** That's the magic of storing information in memory — you can read it AND change it whenever you want!
 
 ```blocks
+let noteSpeed: number = 80
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    let noteSpeed: number = 80
     info.changeScoreBy(1)
     otherSprite.destroy(effects.confetti, 200)
     if (info.score() % 5 == 0) {
@@ -379,10 +379,10 @@ hint~
 
 ```blocks
 //@collapsed
+let powerUp: Sprite = null
+let badVibe: Sprite = null
+let note: Sprite = null
 game.onUpdateInterval(1500, function () {
-    let powerUp: Sprite = null
-    let badVibe: Sprite = null
-    let note: Sprite = null
     if (randint(1, 10) == 1) {
         powerUp = sprites.create(sprites.effects.electricEffect1, SpriteKind.Projectile)
         powerUp.setVelocity(0, noteSpeed)
