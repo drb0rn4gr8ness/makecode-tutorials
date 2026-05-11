@@ -153,8 +153,9 @@ Add these steps INSIDE the `|| game: on game update every ||` block — in this 
 hint~
 
 ```blocks
+let note: Sprite = null
 game.onUpdateInterval(1500, function () {
-    note: Sprite = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
+    note = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
     note.setVelocity(0, noteSpeed)
     note.setPosition(randint(0, 160), 0)
     note.setFlag(SpriteFlag.AutoDestroy, true)
@@ -243,7 +244,7 @@ Let's make the game TRICKY! Update the inside of your `|| game: on game update e
 
 - :shuffle: **Add an If/Else**: At the very TOP of the update block, add an `|| logic: if <true> then / else ||` block. This creates TWO paths — one for bad vibes and one for notes.
 - :game die: **Make it Random**: Replace the **true** condition with a `|| logic: (0) < (0) ||` comparison. On the LEFT put a `|| math: pick random (1) to (10) ||` block. On the RIGHT put **3**. This means a bad vibe appears about 30% of the time!
-- :bomb: **Create the Bad Vibe**: In the **if** section (when the random number is 3 or less), add a new sprite variable called **badVibe**. Pick a spiky, scary, or glitchy image. Set kind to **Enemy**, same `noteSpeed` for velocity, same random x position, Auto Destroy ON.
+- :bomb: **Create the Bad Vibe**: In the **if** section, add a `|| variables(sprites): set mySprite to ||` block. Click **New Variable**, name it **badVibe**, and pick a spiky, scary, or glitchy image. Set the **kind** to **Enemy**. Then add the same blocks you used for the note — `|| sprites: set mySprite velocity to ||` (vy = `noteSpeed`), `|| sprites: set mySprite position to ||` (random x, y = 0), and `|| sprites: set mySprite flag ||` (Auto Destroy ON) — but use **badVibe** instead of **note**.
 - :move: **Move the Note Code**: Move your existing note code into the **else** section (it runs the OTHER 70% of the time).
 
 ~hint I'm confused about the if vs. else sections!
@@ -279,7 +280,6 @@ Now let's make those bad vibes actually DANGEROUS! Add this inside the `|| sprit
 - :camera shake: **CAMERA SHAKE** _(bonus!)_: Add a `|| scene: camera shake by (4) pixels for (500) ms ||` block — makes it feel like a real IMPACT! 📷💥
 
 ```blocks
-let noteSpeed: number = 80
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     otherSprite.destroy(effects.fire, 200)
@@ -358,11 +358,12 @@ We're stacking THREE possibilities now — a power-up, a bad vibe, OR a note. To
 
 Go back inside your `|| game: on game update every ||` block and add click the **`+`** in the existing **`if` / `else`** block to add an **`else if`** block. Move your badVibe code into the **`else if`** block. Now add a new check in the **`if`** block. This one checks `randint(1, 10) = 1` — a 10% chance!
 
-Inside that new if block:
-- :plus: Create a new sprite variable called **powerUp**. Pick a lightning bolt, star, or glowing gem from the Gallery.
-- :marker: Set the kind to **Projectile**
-- :move: Give it the same `noteSpeed` velocity and random x position
-- :trash: Auto Destroy ON
+Inside that new if block, add the same four blocks you used for badVibe (but using a new variable):
+- :plus: Add a `|| variables(sprites): set mySprite to ||` block. Click **New Variable**, name it **powerUp**, and pick a lightning bolt, star, or glowing gem from the Gallery.
+- :marker: Set the **kind** to **Projectile**
+- :move: Add `|| sprites: set mySprite velocity to ||` — vy = `noteSpeed`
+- :pin: Add `|| sprites: set mySprite position to ||` — random x, y = 0
+- :trash: Add `|| sprites: set mySprite flag ||` — Auto Destroy ON
 
 **Step 2 — Wire the Overlap Event:**
 
