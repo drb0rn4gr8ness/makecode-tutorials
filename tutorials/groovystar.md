@@ -368,7 +368,6 @@ Inside that new if block, add the same four blocks you used for badVibe (but usi
 Inside the `|| sprites: on overlap ||` block that says **Player** and **Projectile**, add:
 - :trophy: `|| info: change score by (3) ||` — triple points! 💰
 - :trash: `|| sprites: destroy otherSprite with effect (starField) ||` — LIGHT SHOW! 🌠
-- :music: `|| music: play sound (power up) ||`
 - :camera shake: `|| scene: camera shake by (2) pixels for (500) ms ||`
 
 ~hint Why do we use Projectile kind for the power-up?
@@ -401,7 +400,6 @@ game.onUpdateInterval(1500, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeScoreBy(3)
     otherSprite.destroy(effects.starField, 500)
-    music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.InBackground)
     scene.cameraShake(2, 500)
 })
 ```
