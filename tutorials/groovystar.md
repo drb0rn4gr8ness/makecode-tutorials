@@ -153,9 +153,8 @@ Add these steps INSIDE the `|| game: on game update every ||` block — in this 
 hint~
 
 ```blocks
-let note: Sprite = null
 game.onUpdateInterval(1500, function () {
-    note = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
+    note: Sprite = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
     note.setVelocity(0, noteSpeed)
     note.setPosition(randint(0, 160), 0)
     note.setFlag(SpriteFlag.AutoDestroy, true)
