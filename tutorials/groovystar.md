@@ -39,7 +39,6 @@ Time to set the stage! **Initializing** means telling the computer how to set ev
 hint~
 
 Let's add four blocks inside `|| loops: on start ||`:
-
 - :paint brush: **Background Color**: Click the colored circle in the `|| scene: set background color to ||` block. Pick something bold — try **purple** or **dark blue** for that concert stage vibe! 🎤
 - :trophy: **Score**: Add an `|| info: set score to (0) ||` block. Every player starts at zero — fair game, fair game!
 - :heart: **Lives**: Add an `|| info: set life to (3) ||` block. Every player gets 3 chances before it's game over.
@@ -88,7 +87,6 @@ Time to bring YOUR star to life! This is the most exciting moment — the second
 hint~
 
 Here's how we build YOUR star — four blocks, in this order:
-
 - :plus: **Create the Sprite**: Add a `|| variables(sprites): set mySprite to ||` block inside `|| loops: on start ||`. Click **New Variable** and name it **star**. Pick a star, shimmer, or gem image from the Gallery — something that screams GROOVY!
 - :pin: **Set the Position**: Add a `|| sprites: set mySprite position to x (0) y (0) ||` block. Change **mySprite** to **star**, set **x** to **80** and **y** to **100** so your star starts near the bottom of the stage!
 - :game controller: **Enable Movement**: Add a `|| controller: move mySprite with buttons vx (100) vy (100) ||` block. Change **mySprite** to **star**, drag your `|| variables: noteSpeed ||` block on top of **vx** to use the variable you just made, and set **vy** to **0**. Left and right ONLY — we're staying on the dance floor!
@@ -129,7 +127,6 @@ Their only job is to watch for one specific thing. The moment it happens — **B
 That's exactly what an **event block** does. You don't press a button. You don't call it. **It calls itself!**
 
 We already have a few event guards set up in your template:
-
 - The `|| game: on game update every (1500) ms ||` block — yes, **a timer counts as an event too!** It fires automatically every 1.5 seconds.
 - One overlap event watching for **Player + Food** (your star + a note)
 - One overlap event watching for **Player + Enemy** (your star + a bad vibe)
@@ -145,7 +142,6 @@ Time to fill the sky with music! We're going to add code inside the `|| game: on
 hint~
 
 Add these steps INSIDE the `|| game: on game update every ||` block — in this exact ORDER:
-
 - :plus: **Create a Note**: Add a `|| variables(sprites): set mySprite to ||` block. Create a **New Variable** called **note**. Pick a musical note, gem, or coin image — something fun to collect!
 - :marker: **Set the Kind**: Make sure the kind is set to **Food**. This tells the game "this is something the player wants to catch!"
 - :move: **Give it Speed**: Add a `|| sprites: set mySprite velocity to vx (0) vy (0) ||` block. Change **mySprite** to **note**, keep **vx** at **0**, and set **vy** to `noteSpeed`. Watch — we're using that variable AGAIN! 🎯
@@ -176,7 +172,6 @@ LOOK AT THOSE NOTES FALL! Your game is coming alive! 🎶
 3. "What's the difference between `on start` (runs once) and `on game update every` (runs over and over)?"
 
 ---
-
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## Understanding Sequencing @showhint
@@ -217,10 +212,9 @@ YOUR STAR IS CATCHING NOTES! Hit play and go catch everything you can! 🎯
 
 1. "Point to the block that runs FIRST inside the overlap event. Now point to the one that runs LAST!"
 2. "If I moved the destroy effect line BEFORE the score change line — would the game look different to you? Would the points still count?"
-3. "What's the rule? The computer reads code from **_ to _** — every single time?"
+3. "What's the rule? The computer reads code from TOP to BOTTOM — every single time?"
 
 ---
-
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## What is a Conditional? @showhint
@@ -236,7 +230,6 @@ Programmers have a fancy word for those YES/NO answers — a **BOOLEAN** 🤖. T
 Picture your code as a video-game character speed-running a track. Suddenly the track SPLITS! A glowing sign blocks the way, demanding a boolean answer:
 
 _"Is there a dragon ahead?"_ 🐲
-
 - **YES (true)** → take the LEFT branch and HIDE!
 - **NO (false)** → keep BLASTING straight ahead! 💨
 
@@ -302,7 +295,6 @@ Your game has DANGER now! Dodge those bad vibes! 😤
 3. "What does the ELSE branch do? Shout it out — when does ELSE run?"
 
 ---
-
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## Variables Are ALIVE! 🔥 @showhint
@@ -363,7 +355,6 @@ We're stacking THREE possibilities now — a power-up, a bad vibe, OR a note. To
 Go back inside your `|| game: on game update every ||` block and add click the **`+`** in the existing **`if` / `else`** block to add an **`else if`** block. Move your badVibe code into the **`else if`** block. Now add a new check in the **`if`** block. This one checks `randint(1, 10) = 1` — a 10% chance!
 
 Inside that new if block:
-
 - :plus: Create a new sprite variable called **powerUp**. Pick a lightning bolt, star, or glowing gem from the Gallery.
 - :marker: Set the kind to **Projectile**
 - :move: Give it the same `noteSpeed` velocity and random x position
@@ -372,7 +363,6 @@ Inside that new if block:
 **Step 2 — Wire the Overlap Event:**
 
 Inside the `|| sprites: on overlap ||` block that says **Player** and **Projectile**, add:
-
 - :trophy: `|| info: change score by (3) ||` — triple points! 💰
 - :trash: `|| sprites: destroy otherSprite with effect (starField) ||` — LIGHT SHOW! 🌠
 - :music: `|| music: play sound (power up) ||`
