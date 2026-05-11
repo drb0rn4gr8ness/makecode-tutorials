@@ -328,7 +328,6 @@ hint~
 Hit play and catch 5 notes — feel that speed jump? **Your variable just changed itself!** That's the magic of storing information in memory — you can read it AND change it whenever you want!
 
 ```blocks
-let noteSpeed: number = 80
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     otherSprite.destroy(effects.confetti, 200)
