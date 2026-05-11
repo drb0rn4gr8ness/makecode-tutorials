@@ -153,7 +153,7 @@ Add these steps INSIDE the `|| game: on game update every ||` block — in this 
 hint~
 
 ```blocks
-let note: Sprite = null
+let note: Sprite
 game.onUpdateInterval(1500, function () {
     note = sprites.create(sprites.food.smallBurger, SpriteKind.Food)
     note.setVelocity(0, noteSpeed)
@@ -254,8 +254,8 @@ Let's make the game TRICKY! Update the inside of your `|| game: on game update e
 hint~
 
 ```blocks
-let badVibe: Sprite = null
-let note: Sprite = null
+let badVibe: Sprite
+let note: Sprite
 game.onUpdateInterval(1500, function () {
     if (randint(1, 10) <= 3) {
         badVibe = sprites.create(sprites.projectile.explosion1, SpriteKind.Enemy)
@@ -379,9 +379,9 @@ hint~
 
 ```blocks
 //@collapsed
-let powerUp: Sprite = null
-let badVibe: Sprite = null
-let note: Sprite = null
+let powerUp: Sprite
+let badVibe: Sprite
+let note: Sprite
 game.onUpdateInterval(1500, function () {
     if (randint(1, 10) == 1) {
         powerUp = sprites.create(sprites.effects.electricEffect1, SpriteKind.Projectile)
