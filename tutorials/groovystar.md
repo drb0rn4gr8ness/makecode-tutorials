@@ -35,9 +35,8 @@ Let's GO! 🎶
 Time to set the stage! **Initializing** means telling the computer how to set everything up before the fun begins — the same way every single time so every player gets a fair start.
 
 ~hint What does initializing mean?
-
 - :book: Initializing just means **"telling the computer what to remember before the game starts."** Score always begins at zero, lives always start at 3, and the timer always counts from 60 — every single time!
-  hint~
+hint~
 
 Let's add four blocks inside `|| loops: on start ||`:
 
@@ -67,9 +66,8 @@ That's where **variables** come in! A variable is how YOU flip the switch and te
 - :move: **Set Its Value**: Drag a `|| variables: set noteSpeed to (0) ||` block into the BOTTOM of `|| loops: on start ||`. Change the **0** to **80**. THAT'S you handing the computer a value to remember!
 
 ~hint Why use a variable instead of just typing 80 wherever we need it?
-
 - :book: Because NOW if we want to change the speed, we only change the number in ONE place — the variable — and everywhere that uses it automatically updates! That's the POWER of variables. One change, instant effect everywhere. 💡
-  hint~
+hint~
 
 You just stored the number 80 with the name `noteSpeed`. **In the next step, you'll use that memory for the very first time!** 🧠
 
@@ -86,9 +84,8 @@ let noteSpeed = 80
 Time to bring YOUR star to life! This is the most exciting moment — the second you add this code, your character appears on screen!
 
 ~hint What is a sprite?
-
 - :info: A **sprite** is any image that can move around on the screen. Your star, the falling notes, the bad vibes — they're all sprites! Think of them like actors on a stage.
-  hint~
+hint~
 
 Here's how we build YOUR star — four blocks, in this order:
 
@@ -144,9 +141,8 @@ Let's start putting them to work! 🔥
 Time to fill the sky with music! We're going to add code inside the `|| game: on game update every (1500) ms ||` block — that's the **timer event** you just learned about! It fires automatically every 1.5 seconds.
 
 ~hint What does 1500 mean?
-
 - :info: Time in code is measured in **milliseconds**. 1000 milliseconds = 1 second. So 1500 milliseconds = 1.5 seconds. Every 1.5 seconds, a new note drops from the sky! 🎵
-  hint~
+hint~
 
 Add these steps INSIDE the `|| game: on game update every ||` block — in this exact ORDER:
 
@@ -157,9 +153,8 @@ Add these steps INSIDE the `|| game: on game update every ||` block — in this 
 - :trash: **Auto Destroy**: Add a `|| sprites: set mySprite flag ||` block and turn on **Auto Destroy**. This cleans up any notes that fall past the bottom so your game stays fast!
 
 ~hint Why do we need Auto Destroy?
-
 - :info: Without it, every note the star misses keeps living INVISIBLY below the screen — still taking up memory! Auto Destroy is like a cleanup crew that removes them the moment they go offscreen. 🧹
-  hint~
+hint~
 
 ```blocks
 game.onUpdateInterval(1500, function () {
@@ -204,9 +199,8 @@ Let's make something AMAZING happen the moment your star catches a note! Add all
 - :trash: **Confetti Explosion**: Add a `|| sprites: destroy mySprite with effect ||` block. Change **mySprite** to **otherSprite**, click the **+** sign, and pick **confetti** or **rings**. BOOM — the note EXPLODES when caught! 🎊
 
 ~hint Who calls the overlap event? How does it know to run?
-
 - :book: YOU never call it — MakeCode watches every single frame. The moment the star sprite and a note sprite overlap even one pixel? MakeCode fires that event block automatically. That's what makes it an **event** — something from the outside triggers it!
-  hint~
+hint~
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
@@ -260,11 +254,10 @@ Let's make the game TRICKY! Update the inside of your `|| game: on game update e
 - :move: **Move the Note Code**: Move your existing note code into the **else** section (it runs the OTHER 70% of the time).
 
 ~hint I'm confused about the if vs. else sections!
-
 - :info: The **IF** section runs when the dice roll lands on 1, 2, or 3 — that's 3 out of 10. **BAD VIBE drops!**
 - The **ELSE** section runs all other times — 4, 5, 6, 7, 8, 9, or 10. **NOTE drops!**
 - So most of the time you see notes, but every so often — surprise! Bad vibe incoming! 💀
-  hint~
+hint~
 
 ```blocks
 game.onUpdateInterval(1500, function () {
@@ -335,9 +328,8 @@ We need a way to ask the computer: _"Did the score just hit a multiple of 5?"_ T
 - :move: **Increase the Speed**: Inside the if block, add a `|| variables: change noteSpeed by (10) ||` block. Every 5 catches — SPEED UP!
 
 ~hint Want a real-world picture of mod?
-
 - :book: Think of mod as a speedometer that clicks every 5 points. **Score 5? Click. Score 10? Click. Score 15? Click.** Each click = the remainder hits 0 = the speed goes up by 10! 🏎️
-  hint~
+hint~
 
 Hit play and catch 5 notes — feel that speed jump? **Your variable just changed itself!** That's the magic of storing information in memory — you can read it AND change it whenever you want!
 
@@ -387,9 +379,8 @@ Inside the `|| sprites: on overlap ||` block that says **Player** and **Projecti
 - :camera shake: `|| scene: camera shake by (2) pixels for (500) ms ||`
 
 ~hint Why do we use Projectile kind for the power-up?
-
 - :info: MakeCode has built-in kinds: Player, Food, Enemy, Projectile. We already used Player, Food, and Enemy — so Projectile is the perfect slot for our power-up! The kind is just a label that lets the overlap event know WHICH two sprites touched.
-  hint~
+hint~
 
 ```blocks
 //@collapsed
