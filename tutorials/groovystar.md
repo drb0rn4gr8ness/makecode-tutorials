@@ -114,7 +114,6 @@ BOOM! Your star is on screen and moving around! Hit play and try it out — you 
 2. "Which line of code tells the computer to remember the star's speed? Can everyone point to it?"
 3. "Thumbs UP if you think changing `noteSpeed` to 200 makes the star move FASTER — thumbs DOWN if you think slower!"
 
----
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## What is an Event? @showhint
@@ -171,7 +170,6 @@ LOOK AT THOSE NOTES FALL! Your game is coming alive! 🎶
 2. "What KIND of event is the on-game-update-every block — is it a button event? A timer event? Something else?"
 3. "What's the difference between `on start` (runs once) and `on game update every` (runs over and over)?"
 
----
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## Understanding Sequencing @showhint
@@ -214,7 +212,6 @@ YOUR STAR IS CATCHING NOTES! Hit play and go catch everything you can! 🎯
 2. "If I moved the destroy effect line BEFORE the score change line — would the game look different to you? Would the points still count?"
 3. "What's the rule? The computer reads code from TOP to BOTTOM — every single time?"
 
----
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## What is a Conditional? @showhint
@@ -296,7 +293,6 @@ Your game has DANGER now! Dodge those bad vibes! 😤
 2. "What number would you change to make bad vibes appear MORE often? What about LESS often?"
 3. "What does the ELSE branch do? Shout it out — when does ELSE run?"
 
----
 Click **Next** when your Sensei gives the signal! 🥷
 
 ## Variables Are ALIVE! 🔥 @showhint
