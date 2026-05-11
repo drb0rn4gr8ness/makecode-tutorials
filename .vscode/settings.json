@@ -1,5 +1,5 @@
 {
-  "editor.formatOnType": true,
+  "editor.formatOnType": false,
   "files.autoSave": "afterDelay",
   "editor.formatOnSave": false,
   "files.watcherExclude": {
